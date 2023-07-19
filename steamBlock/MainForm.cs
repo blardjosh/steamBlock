@@ -31,7 +31,7 @@ namespace steamBlock
                 fwRule.ApplicationName = @"C:\Program Files (x86)\Steam\steam.exe";
                 fwRule.Direction = NET_FW_RULE_DIRECTION_.NET_FW_RULE_DIR_OUT;
                 fwRule.Enabled = true;
-                fwRule.Action = NET_FW_ACTION_.NET_FW_ACTION_BLOCK;
+                fwRule.Action = NET_FW_ACTION_.NET_FW_ACTION_ALLOW;
                 fwRule.Protocol = 256; // ANY
                 fwRule.Profiles = (int)NET_FW_PROFILE_TYPE2_.NET_FW_PROFILE2_ALL;
 
