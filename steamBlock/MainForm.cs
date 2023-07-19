@@ -7,26 +7,24 @@ namespace steamBlock
     public partial class MainForm : Form
     {
         private const string FwID = "{304CE942-6E39-40D8-943A-B913C40C9CD4}";
+        private INetFwRule fwRule;
+        private INetFwPolicy2 fwPolicy2;
+        private Type tNetFwPolicy2;
 
         public MainForm()
         {
             InitializeComponent();
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            System.Windows.Forms.Application.Exit();
-        }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
             try
             {
-                Type tNetFwPolicy2 = Type.GetTypeFromProgID("HNetCfg.FwPolicy2");
-                INetFwPolicy2 fwPolicy2 = (INetFwPolicy2)Activator.CreateInstance(tNetFwPolicy2);
+                tNetFwPolicy2 = Type.GetTypeFromProgID("HNetCfg.FwPolicy2");
+                fwPolicy2 = (INetFwPolicy2)Activator.CreateInstance(tNetFwPolicy2);
 
 
-                INetFwRule fwRule = (INetFwRule2)Activator.CreateInstance(Type.GetTypeFromProgID("HNetCfg.FWRule"));
+                fwRule = (INetFwRule2)Activator.CreateInstance(Type.GetTypeFromProgID("HNetCfg.FWRule"));
                 fwRule.Name = "steamBlockApp";
                 fwRule.ApplicationName = @"C:\Program Files (x86)\Steam\steam.exe";
                 fwRule.Direction = NET_FW_RULE_DIRECTION_.NET_FW_RULE_DIR_OUT;
@@ -53,8 +51,19 @@ namespace steamBlock
             }
             catch (Exception r)
             {
-                StatusLabel1.Text = r.ToString();
+                StatusLabel1.Text = "Error, try launching as administrator!";
             }
+        }
+
+        private void setDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog.ShowDialog();
+        }
+
+        private void openFileDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            setDirectoryToolStripMenuItem.Text = openFileDialog.FileName;
+            fwPolicy2.Rules.Item(fwRule.Name).ApplicationName = setDirectoryToolStripMenuItem.Text;
         }
     }
 }
