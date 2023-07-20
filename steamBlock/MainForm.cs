@@ -119,5 +119,10 @@ namespace steamBlock
             steamBlock.Properties.Settings.Default.saveAppDir = fwRule.ApplicationName;
             steamBlock.Properties.Settings.Default.Save();
         }
+
+        private void toggleButton_Click(object sender, EventArgs e)
+        {
+            toggleUpdateButtons();
+        }
     }
 }

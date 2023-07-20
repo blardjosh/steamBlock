@@ -86,33 +86,36 @@
             // toggleActionToolStripMenuItem
             // 
             toggleActionToolStripMenuItem.Name = "toggleActionToolStripMenuItem";
-            toggleActionToolStripMenuItem.Size = new Size(180, 22);
+            toggleActionToolStripMenuItem.Size = new Size(141, 22);
             toggleActionToolStripMenuItem.Text = "Togg&le";
             toggleActionToolStripMenuItem.Click += toggleActionToolStripMenuItem_Click;
             // 
             // setDirectoryToolStripMenuItem
             // 
             setDirectoryToolStripMenuItem.Name = "setDirectoryToolStripMenuItem";
-            setDirectoryToolStripMenuItem.Size = new Size(180, 22);
+            setDirectoryToolStripMenuItem.Size = new Size(141, 22);
             setDirectoryToolStripMenuItem.Text = "&Set Directory";
             setDirectoryToolStripMenuItem.Click += setDirectoryToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(180, 22);
+            exitToolStripMenuItem.Size = new Size(141, 22);
             exitToolStripMenuItem.Text = "E&xit";
             // 
             // toggleButton
             // 
+            toggleButton.BackColor = Color.FromArgb(255, 192, 192);
             toggleButton.Dock = DockStyle.Fill;
+            toggleButton.FlatStyle = FlatStyle.Flat;
             toggleButton.Font = new Font("Segoe UI", 72F, FontStyle.Regular, GraphicsUnit.Point);
             toggleButton.Location = new Point(0, 24);
             toggleButton.Name = "toggleButton";
             toggleButton.Size = new Size(434, 165);
             toggleButton.TabIndex = 4;
-            toggleButton.Text = "Block";
-            toggleButton.UseVisualStyleBackColor = true;
+            toggleButton.Text = "Block!";
+            toggleButton.UseVisualStyleBackColor = false;
+            toggleButton.Click += toggleButton_Click;
             // 
             // MainForm
             // 
