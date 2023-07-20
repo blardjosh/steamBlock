@@ -7,6 +7,7 @@ namespace steamBlock
     public partial class MainForm : Form
     {
         private const string FwID = "{304CE942-6E39-40D8-943A-B913C40C9CD4}";
+        private const string defPath = @"C:\Program Files (x86)\Steam\steam.exe";
         private INetFwRule fwRule;
         private INetFwPolicy2 fwPolicy2;
         private Type tNetFwPolicy2;
@@ -14,42 +15,6 @@ namespace steamBlock
         private bool ruleAction;
         private Color colorRed = Color.FromArgb(255, 192, 192);
         private Color colorGreen = Color.FromArgb(192, 255, 192);
-
-        private void updateStatusBar(bool status)
-        {
-            if (status)
-            {
-                statusStrip1.BackColor = colorGreen;
-                StatusLabel1.Text = "Steam connection is currently being Allowed.";
-            }
-            else
-            {
-                statusStrip1.BackColor = colorRed;
-                StatusLabel1.Text = "Steam connection is currently being Blocked.";
-            }
-        }
-
-        private void toggleUpdateButtons()
-        {
-            if (fwRule.Action == NET_FW_ACTION_.NET_FW_ACTION_ALLOW)
-            {
-                fwRule.Action = NET_FW_ACTION_.NET_FW_ACTION_BLOCK;
-                toggleActionToolStripMenuItem.Text = "A&llow Steam";
-                updateStatusBar(false);
-                toggleButton.Text = "ALLOW!";
-                toggleButton.BackColor = colorGreen;
-            }
-            else
-            {
-                fwRule.Action = NET_FW_ACTION_.NET_FW_ACTION_ALLOW;
-                toggleActionToolStripMenuItem.Text = "B&lock Steam";
-                updateStatusBar(true);
-                toggleButton.Text = "BLOCK!";
-                toggleButton.BackColor = colorRed;
-            }
-
-            fwPolicy2.Rules.Item(fwRule.Name).Action = fwRule.Action;
-        }
 
         public MainForm()
         {
@@ -66,7 +31,7 @@ namespace steamBlock
 
                 fwRule = (INetFwRule2)Activator.CreateInstance(Type.GetTypeFromProgID("HNetCfg.FWRule"));
                 fwRule.Name = "steamBlockApp";
-                fwRule.ApplicationName = steamBlock.Properties.Settings.Default.saveAppDir;
+                fwRule.ApplicationName = defPath;
                 fwRule.Direction = NET_FW_RULE_DIRECTION_.NET_FW_RULE_DIR_OUT;
                 fwRule.Enabled = true;
                 fwRule.Action = NET_FW_ACTION_.NET_FW_ACTION_ALLOW;
@@ -87,13 +52,14 @@ namespace steamBlock
                 }
                 else
                 {
+                    openFileDialog.ShowDialog();
                     fwPolicy2.Rules.Add(fwRule);
                     updateStatusBar(ruleAction);
                 }
             }
             catch (Exception r)
             {
-                StatusLabel1.Text = "Error, try launching as administrator!";
+                StatusLabel1.Text = "Error, try updating file path!";
             }
         }
 
@@ -114,12 +80,6 @@ namespace steamBlock
             toggleUpdateButtons();
         }
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            steamBlock.Properties.Settings.Default.saveAppDir = fwRule.ApplicationName;
-            steamBlock.Properties.Settings.Default.Save();
-        }
-
         private void toggleButton_Click(object sender, EventArgs e)
         {
             toggleUpdateButtons();
@@ -129,5 +89,52 @@ namespace steamBlock
         {
             System.Windows.Forms.Application.Exit();
         }
+
+
+        private void updateStatusBar(bool status)
+        {
+            if (status)
+            {
+                statusStrip1.BackColor = colorGreen;
+                StatusLabel1.Text = "Steam connection is currently being Allowed.";
+            }
+            else
+            {
+                statusStrip1.BackColor = colorRed;
+                StatusLabel1.Text = "Steam connection is currently being Blocked.";
+            }
+        }
+
+        private void toggleUpdateButtons()
+        {
+            if (!fwRule.ApplicationName.Equals(""))
+            {
+
+                if (fwRule.Action == NET_FW_ACTION_.NET_FW_ACTION_ALLOW)
+                {
+                    fwRule.Action = NET_FW_ACTION_.NET_FW_ACTION_BLOCK;
+                    toggleActionToolStripMenuItem.Text = "Allow Steam";
+                    updateStatusBar(false);
+                    toggleButton.Text = "ALLOW!";
+                    toggleButton.BackColor = colorGreen;
+                }
+                else
+                {
+                    fwRule.Action = NET_FW_ACTION_.NET_FW_ACTION_ALLOW;
+                    toggleActionToolStripMenuItem.Text = "Block Steam";
+                    updateStatusBar(true);
+                    toggleButton.Text = "BLOCK!";
+                    toggleButton.BackColor = colorRed;
+                }
+
+                fwPolicy2.Rules.Item(fwRule.Name).Action = fwRule.Action;
+            }
+            else
+            {
+                openFileDialog.ShowDialog();
+                toggleUpdateButtons();
+            }
+        }
+
     }
 }

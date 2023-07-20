@@ -63,8 +63,8 @@
             // 
             // openFileDialog
             // 
-            openFileDialog.FileName = "openFileDialog";
-            openFileDialog.InitialDirectory = "This PC";
+            openFileDialog.FileName = "steam.exe";
+            openFileDialog.InitialDirectory = "defDir";
             openFileDialog.FileOk += openFileDialog_FileOk;
             // 
             // menuStrip1
@@ -86,21 +86,21 @@
             // toggleActionToolStripMenuItem
             // 
             toggleActionToolStripMenuItem.Name = "toggleActionToolStripMenuItem";
-            toggleActionToolStripMenuItem.Size = new Size(180, 22);
+            toggleActionToolStripMenuItem.Size = new Size(141, 22);
             toggleActionToolStripMenuItem.Text = "Togg&le";
             toggleActionToolStripMenuItem.Click += toggleActionToolStripMenuItem_Click;
             // 
             // setDirectoryToolStripMenuItem
             // 
             setDirectoryToolStripMenuItem.Name = "setDirectoryToolStripMenuItem";
-            setDirectoryToolStripMenuItem.Size = new Size(180, 22);
+            setDirectoryToolStripMenuItem.Size = new Size(141, 22);
             setDirectoryToolStripMenuItem.Text = "&Set Directory";
             setDirectoryToolStripMenuItem.Click += setDirectoryToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(180, 22);
+            exitToolStripMenuItem.Size = new Size(141, 22);
             exitToolStripMenuItem.Text = "E&xit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
@@ -130,8 +130,7 @@
             MainMenuStrip = menuStrip1;
             Margin = new Padding(2, 1, 2, 1);
             Name = "MainForm";
-            Text = "Steam Block";
-            FormClosing += MainForm_FormClosing;
+            Text = "SteamBlock.bat";
             Load += MainForm_Load;
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();

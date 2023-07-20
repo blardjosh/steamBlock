@@ -82,6 +82,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -191,7 +199,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:steamBlockAppSetup"
         "ProductCode" = "8:{42F7602B-B489-4CA3-A9FB-F5C45AB98250}"
-        "PackageCode" = "8:{FAFD35C4-4324-42E9-9E6D-00F9FE9C2EE4}"
+        "PackageCode" = "8:{3F40BA91-C46D-42E8-9BCA-F7EB32CDCAB1}"
         "UpgradeCode" = "8:{9CA67FF8-8604-43BD-8990-9FED9BC60284}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -327,7 +335,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_FACAD61364D54A0B968F2A2D48F8A2FD"
             {
-            "Name" = "8:SteamBlock"
+            "Name" = "8:Steam Block"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
