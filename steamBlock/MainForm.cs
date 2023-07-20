@@ -12,19 +12,43 @@ namespace steamBlock
         private Type tNetFwPolicy2;
         private bool ruleExists;
         private bool ruleAction;
+        private Color colorRed = Color.FromArgb(255, 192, 192);
+        private Color colorGreen = Color.FromArgb(192, 255, 192);
 
         private void updateStatusBar(bool status)
         {
             if (status)
             {
-                statusStrip1.BackColor = Color.FromArgb(192, 255, 192);
+                statusStrip1.BackColor = colorGreen;
                 StatusLabel1.Text = "Steam connection is currently being Allowed.";
             }
             else
             {
-                statusStrip1.BackColor = Color.FromArgb(255, 192, 192);
+                statusStrip1.BackColor = colorRed;
                 StatusLabel1.Text = "Steam connection is currently being Blocked.";
             }
+        }
+
+        private void toggleUpdateButtons()
+        {
+            if (fwRule.Action == NET_FW_ACTION_.NET_FW_ACTION_ALLOW)
+            {
+                fwRule.Action = NET_FW_ACTION_.NET_FW_ACTION_BLOCK;
+                toggleActionToolStripMenuItem.Text = "A&llow Steam";
+                updateStatusBar(false);
+                toggleButton.Text = "ALLOW!";
+                toggleButton.BackColor = colorGreen;
+            }
+            else
+            {
+                fwRule.Action = NET_FW_ACTION_.NET_FW_ACTION_ALLOW;
+                toggleActionToolStripMenuItem.Text = "B&lock Steam";
+                updateStatusBar(true);
+                toggleButton.Text = "BLOCK!";
+                toggleButton.BackColor = colorRed;
+            }
+
+            fwPolicy2.Rules.Item(fwRule.Name).Action = fwRule.Action;
         }
 
         public MainForm()
@@ -85,28 +109,15 @@ namespace steamBlock
             fwPolicy2.Rules.Item(fwRule.Name).ApplicationName = fwRule.ApplicationName;
         }
 
+        private void toggleActionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            toggleUpdateButtons();
+        }
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             steamBlock.Properties.Settings.Default.saveAppDir = fwRule.ApplicationName;
             steamBlock.Properties.Settings.Default.Save();
-        }
-
-        private void toggleActionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (fwRule.Action == NET_FW_ACTION_.NET_FW_ACTION_ALLOW)
-            {
-                fwRule.Action = NET_FW_ACTION_.NET_FW_ACTION_BLOCK;
-                toggleActionToolStripMenuItem.Text = "&Block Steam";
-                updateStatusBar(false);
-            } 
-            else
-            {
-                fwRule.Action = NET_FW_ACTION_.NET_FW_ACTION_ALLOW;
-                toggleActionToolStripMenuItem.Text = "&Allow Steam";
-                updateStatusBar(true);
-            }
-
-            fwPolicy2.Rules.Item(fwRule.Name).Action = fwRule.Action;
         }
     }
 }

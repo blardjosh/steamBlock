@@ -34,9 +34,10 @@
             openFileDialog = new OpenFileDialog();
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
+            toggleActionToolStripMenuItem = new ToolStripMenuItem();
             setDirectoryToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
-            toggleActionToolStripMenuItem = new ToolStripMenuItem();
+            toggleButton = new Button();
             statusStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -82,6 +83,13 @@
             fileToolStripMenuItem.Size = new Size(37, 20);
             fileToolStripMenuItem.Text = "&File";
             // 
+            // toggleActionToolStripMenuItem
+            // 
+            toggleActionToolStripMenuItem.Name = "toggleActionToolStripMenuItem";
+            toggleActionToolStripMenuItem.Size = new Size(180, 22);
+            toggleActionToolStripMenuItem.Text = "Togg&le";
+            toggleActionToolStripMenuItem.Click += toggleActionToolStripMenuItem_Click;
+            // 
             // setDirectoryToolStripMenuItem
             // 
             setDirectoryToolStripMenuItem.Name = "setDirectoryToolStripMenuItem";
@@ -95,18 +103,23 @@
             exitToolStripMenuItem.Size = new Size(180, 22);
             exitToolStripMenuItem.Text = "E&xit";
             // 
-            // toggleActionToolStripMenuItem
+            // toggleButton
             // 
-            toggleActionToolStripMenuItem.Name = "toggleActionToolStripMenuItem";
-            toggleActionToolStripMenuItem.Size = new Size(180, 22);
-            toggleActionToolStripMenuItem.Text = "Toggle";
-            toggleActionToolStripMenuItem.Click += toggleActionToolStripMenuItem_Click;
+            toggleButton.Dock = DockStyle.Fill;
+            toggleButton.Font = new Font("Segoe UI", 72F, FontStyle.Regular, GraphicsUnit.Point);
+            toggleButton.Location = new Point(0, 24);
+            toggleButton.Name = "toggleButton";
+            toggleButton.Size = new Size(434, 165);
+            toggleButton.TabIndex = 4;
+            toggleButton.Text = "Block";
+            toggleButton.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(434, 211);
+            Controls.Add(toggleButton);
             Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -133,5 +146,6 @@
         private ToolStripMenuItem setDirectoryToolStripMenuItem;
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripMenuItem toggleActionToolStripMenuItem;
+        private Button toggleButton;
     }
 }
