@@ -44,24 +44,6 @@ namespace steamBlock
             return true; 
         }
 
-        /*
-         * Returns a checkmark if status is true, and a no symbol if false,
-         * and null string if status is null.
-         */
-
-        public static string VisStatus(bool status)
-        {
-            if (status)
-            {
-                return "Allow";
-            }
-            else if (status == false)
-            {
-                return "Block";
-            }
-            return "";
-        }
-
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
