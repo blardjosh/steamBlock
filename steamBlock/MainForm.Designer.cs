@@ -86,22 +86,23 @@
             // toggleActionToolStripMenuItem
             // 
             toggleActionToolStripMenuItem.Name = "toggleActionToolStripMenuItem";
-            toggleActionToolStripMenuItem.Size = new Size(141, 22);
+            toggleActionToolStripMenuItem.Size = new Size(180, 22);
             toggleActionToolStripMenuItem.Text = "Togg&le";
             toggleActionToolStripMenuItem.Click += toggleActionToolStripMenuItem_Click;
             // 
             // setDirectoryToolStripMenuItem
             // 
             setDirectoryToolStripMenuItem.Name = "setDirectoryToolStripMenuItem";
-            setDirectoryToolStripMenuItem.Size = new Size(141, 22);
+            setDirectoryToolStripMenuItem.Size = new Size(180, 22);
             setDirectoryToolStripMenuItem.Text = "&Set Directory";
             setDirectoryToolStripMenuItem.Click += setDirectoryToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(141, 22);
+            exitToolStripMenuItem.Size = new Size(180, 22);
             exitToolStripMenuItem.Text = "E&xit";
+            exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // toggleButton
             // 
