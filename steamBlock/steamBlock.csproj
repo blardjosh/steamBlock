@@ -24,10 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="4x.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="..\..\..\..\Downloads\4x.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>

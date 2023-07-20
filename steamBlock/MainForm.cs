@@ -6,8 +6,6 @@ namespace steamBlock
 {
     public partial class MainForm : Form
     {
-        private const string FwID = "{304CE942-6E39-40D8-943A-B913C40C9CD4}";
-        private const string defPath = @"C:\Program Files (x86)\Steam\steam.exe";
         private INetFwRule fwRule;
         private INetFwPolicy2 fwPolicy2;
         private Type tNetFwPolicy2;
@@ -31,7 +29,7 @@ namespace steamBlock
 
                 fwRule = (INetFwRule2)Activator.CreateInstance(Type.GetTypeFromProgID("HNetCfg.FWRule"));
                 fwRule.Name = "steamBlockApp";
-                fwRule.ApplicationName = defPath;
+                fwRule.ApplicationName = @"C:\Program Files (x86)\Steam\steam.exe";
                 fwRule.Direction = NET_FW_RULE_DIRECTION_.NET_FW_RULE_DIR_OUT;
                 fwRule.Enabled = true;
                 fwRule.Action = NET_FW_ACTION_.NET_FW_ACTION_ALLOW;
@@ -41,21 +39,20 @@ namespace steamBlock
                 ruleExists = Program.RuleExists(fwRule.Name, fwPolicy2);
                 ruleAction = Program.RuleAction(fwRule.Name, fwPolicy2);
 
-                if (!fwRule.ApplicationName.Equals(""))
+                if (!File.Exists(fwRule.ApplicationName))
                 {
-                    setDirectoryToolStripMenuItem.Text = fwRule.ApplicationName;
+                    openFileDialog.ShowDialog();
                 }
-
                 if (ruleExists)
                 {
                     updateStatusBar(ruleAction);
                 }
                 else
                 {
-                    openFileDialog.ShowDialog();
                     fwPolicy2.Rules.Add(fwRule);
                     updateStatusBar(ruleAction);
                 }
+                setDirectoryToolStripMenuItem.Text = fwRule.ApplicationName;
             }
             catch (Exception r)
             {
