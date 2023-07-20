@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="saveAppDir" Type="System.String" Scope="User">
-      <Value Profile="(Default)">""</Value>
+      <Value Profile="(Default)">@"C:\Program Files (x86)\Steam\steam.exe"</Value>
     </Setting>
   </Settings>
 </SettingsFile>

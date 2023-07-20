@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "steamBlock", "steamBlock\steamBlock.csproj", "{FB2DA2D2-E3D3-48FB-BC22-CBF41B7CB775}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "steamBlock", "steamBlock\steamBlock.csproj", "{FB2DA2D2-E3D3-48FB-BC22-CBF41B7CB775}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "steamBlockAppSetup", "steamBlockAppSetup\steamBlockAppSetup.vdproj", "{0B6AB2BD-4F93-4B97-A8B6-0DC058BCD658}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FB2DA2D2-E3D3-48FB-BC22-CBF41B7CB775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB2DA2D2-E3D3-48FB-BC22-CBF41B7CB775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB2DA2D2-E3D3-48FB-BC22-CBF41B7CB775}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{FB2DA2D2-E3D3-48FB-BC22-CBF41B7CB775}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{FB2DA2D2-E3D3-48FB-BC22-CBF41B7CB775}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB2DA2D2-E3D3-48FB-BC22-CBF41B7CB775}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B6AB2BD-4F93-4B97-A8B6-0DC058BCD658}.Debug|Any CPU.ActiveCfg = Release
+		{0B6AB2BD-4F93-4B97-A8B6-0DC058BCD658}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

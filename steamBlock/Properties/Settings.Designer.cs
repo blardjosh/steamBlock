@@ -25,7 +25,7 @@ namespace steamBlock.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\"\"")]
+        [global::System.Configuration.DefaultSettingValueAttribute("@\"C:\\Program Files (x86)\\Steam\\steam.exe\"")]
         public string saveAppDir {
             get {
                 return ((string)(this["saveAppDir"]));
